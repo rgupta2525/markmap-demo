@@ -1,24 +1,66 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import MarkmapHooks from './markmap/markmap-hooks';
+import { Data, convertToMarkdown } from './markmap/utils';
 
 function App() {
+  const data: Data = {
+    title: "Mind Map",
+    sections: [
+      {
+        title: "Section 1",
+        sections: [
+          {
+            title: "Subsection 1.1",
+            items: [
+              { title: "Item 1.1.1" },
+              { title: "Item 1.1.2" },
+            ],
+          },
+          {
+            title: "Subsection 1.2",
+            items: [
+              { title: "Item 1.2.1" },
+              { title: "Item 1.2.2" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Section 2",
+        sections: [
+          {
+            title: "Subsection 2.1",
+            items: [
+              { title: "Item 2.1.1" },
+              { title: "Item 2.1.2" },
+            ],
+          },
+          {
+            title: "Subsection 2.2",
+            items: [
+              { title: "Item 2.2.1" },
+              { title: "Item 2.2.2" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Section 3",
+        items: [
+          { title: "Item 3.1" },
+          { title: "Item 3.2" },
+        ],
+      },
+    ],
+  };
+  
+  
+  const markdownData = convertToMarkdown(data);
+  console.log('markdownData----', markdownData);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MarkmapHooks data={markdownData}/>
     </div>
   );
 }
